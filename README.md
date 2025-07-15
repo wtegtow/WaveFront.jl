@@ -4,7 +4,14 @@
 [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://wtegtow.github.io/WaveFront.jl/dev/)
 [![Build Status](https://github.com/wtegtow/WaveFront.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/wtegtow/WaveFront.jl/actions/workflows/CI.yml?query=branch%3Amain)
 
-**WaveFront.jl** solves the **Eikonal equations** of the form $|\nabla T(x)| = \frac{1}{v(x)}$  using the Fast Sweeping Method. 
+**WaveFront.jl** solves the **Eikonal equation** of the form:
+
+$$
+|\nabla T(x)| = \frac{1}{v(x)}
+$$
+
+using the **Fast Sweeping Method**.
+
 
 ### Installation and Quick Start
 
