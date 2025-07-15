@@ -1,4 +1,4 @@
-# WaveFront
+# WaveFront.jl
 
 [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://wtegtow.github.io/WaveFront.jl/stable/)
 [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://wtegtow.github.io/WaveFront.jl/dev/)
