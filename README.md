@@ -1,7 +1,5 @@
 # WaveFront.jl
 
-[![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://wtegtow.github.io/WaveFront.jl/stable/)
-[![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://wtegtow.github.io/WaveFront.jl/dev/)
 [![Build Status](https://github.com/wtegtow/WaveFront.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/wtegtow/WaveFront.jl/actions/workflows/CI.yml?query=branch%3Amain)
 
 **WaveFront.jl** solves the **Eikonal equation** of the form:
@@ -30,7 +28,7 @@ velocity = ones(length(x_coords),
 
 grid = Grid2D(x_coords, y_coords, velocity)
 convergence_criterium = 1e-6 # L1 norm for 2D
-tt = fast_sweeping(grid, [source_coords], ϵ = 1e-6, max_iter=50, verbose=false);
+tt = fast_sweeping(grid, [source_coords], ϵ = convergence_criterium, max_iter=50, verbose=false);
 
 # 3D example 
 z_coords = 0:20:1000 
