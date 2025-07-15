@@ -24,6 +24,8 @@ function fast_sweeping(grid::Grid2D, sources_phys; ϵ = 1e-6, max_iter=50, verbo
     C = grid.velocity
     BIG_VAL = 1e10
     T = fill(BIG_VAL, nx, ny)
+    T_old = similar(T)
+
     @assert size(T) == size(C) 
 
     sources = [(argmin(abs.(s[1] .- x_coords)),
@@ -43,7 +45,7 @@ function fast_sweeping(grid::Grid2D, sources_phys; ϵ = 1e-6, max_iter=50, verbo
     converged = false
     for iter in 1:max_iter
 
-        T_old = copy(T)
+        T_old .= T
 
         for (x_order, y_order) in sweeping_orders
 
@@ -134,6 +136,7 @@ function fast_sweeping(grid::Grid3D, sources_phys; ϵ = 0.1, max_iter=50, verbos
     C = grid.velocity
     BIG_VAL = 1e10
     T = fill(BIG_VAL, nx, ny, nz)
+    T_old = similar(T)
     @assert size(T) == size(C)
 
     sources = [(argmin(abs.(s[1] .- x_coords)),
@@ -158,7 +161,7 @@ function fast_sweeping(grid::Grid3D, sources_phys; ϵ = 0.1, max_iter=50, verbos
     converged = false
     for iter in 1:max_iter
 
-        T_old = copy(T)
+        T_old .= T
 
         for (x_order, y_order, z_order) in sweeping_orders
 
