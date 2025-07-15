@@ -1,6 +1,6 @@
 using WaveFront
 using Test
-using GLMakie 
+#using GLMakie 
 
 function tt_ana_hom(x_coords, y_coords, velocity, source)
     nx, ny = length(x_coords), length(y_coords)
@@ -35,7 +35,7 @@ function test_hom2d(;plotit=false)
 
     if plotit 
 
-        Makie.inline!(true)
+        #Makie.inline!(true)
 
         fig = Figure()
         ax1 = Axis(fig[1,1], yreversed=true, title="Eikonal", xlabel="x", ylabel="y")

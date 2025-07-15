@@ -1,6 +1,6 @@
 using WaveFront
 using Test
-using GLMakie
+#using GLMakie 
 
 function tt_ana_layered(y_coords, velocity_layers, source_y)
 
@@ -55,7 +55,7 @@ function test_het2d(;plotit=false)
     @test max_error < MAX_ERROR
     
     if plotit 
-        Makie.inline!(true)
+        #Makie.inline!(true)
 
         fig = Figure(size=(500,500))
 

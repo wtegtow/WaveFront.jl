@@ -94,18 +94,6 @@ function fast_sweeping(grid::Grid2D, sources_phys; ϵ = 1e-6, max_iter=50, verbo
                 
             end # i,j end 
 
-            # XBOUNDARIES
-            for i in 1:nx 
-                T[i,1]  = min(max(2*T[i,2]   - T[i,3],   T[i,3]),   T_old[i,1])
-                T[i,ny] = min(max(2*T[i,ny-1] - T[i,ny-2], T[i,ny-2]), T_old[i,ny])
-            end
-
-            # YBOUNDARIES
-            for j in 1:ny
-                T[1,j]  = min(max(2*T[2,j]   - T[3,j],   T[3,j]),   T_old[1,j])
-                T[nx,j] = min(max(2*T[nx-1,j] - T[nx-2,j], T[nx-2,j]), T_old[nx,j])
-            end
-
         end # sweep order end 
 
         if sum(abs.(T - T_old))  < ϵ

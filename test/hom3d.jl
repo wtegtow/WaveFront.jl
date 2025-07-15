@@ -1,5 +1,5 @@
 using WaveFront
-using GLMakie
+#using GLMakie
 
 
 function tt_ana_hom_3d(x_coords, y_coords, z_coords, velocity, source)
@@ -31,15 +31,15 @@ function test_hom2d(;plotit=false, verbose=false)
     tt_num = fast_sweeping(grid, source_coords; ϵ=1e-4, verbose=false)
     tt_ana = tt_ana_hom_3d(x_coords, y_coords, z_coords, velocity, source_coords[1])
 
-    max_error_abs = maximum(abs.(T .- T_ana))
-    max_tt_ana = maximum(T_ana)
+    max_error_abs = maximum(abs.(tt_num .- tt_ana))
+    max_tt_ana = maximum(tt_ana)
     max_error_percent = 100 * max_error_abs / max_tt_ana
     if verbose println("Max Error % ", max_error_percent) end
 
     @test max_error_percent < MAX_ERROR_PERCENT
 
     if plotit  
-        Makie.inline!(true)
+        #Makie.inline!(true)
         fig = Figure(size=(800,800)) 
 
         midz = Int(floor(length(z_coords)/2))

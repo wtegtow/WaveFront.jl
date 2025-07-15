@@ -1,6 +1,7 @@
 using WaveFront
 using Test
-using GLMakie
+
+#using GLMakie
 
 function tt_ana_layered_3d(z_coords, velocity_layers, source_z)
     nz = length(z_coords)
@@ -66,7 +67,7 @@ function test_het3d(;plotit=false, verbose=false)
     @test max_error_percent < MAX_ERROR_PERCENT
 
     if plotit
-        Makie.inline!(true)
+        #Makie.inline!(true)
 
         fig = Figure(size=(600,600))
 
