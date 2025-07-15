@@ -1,6 +1,6 @@
 using WaveFront
 using Test
-using CairoMakie
+using GLMakie
 
 function tt_ana_layered(y_coords, velocity_layers, source_y)
 
@@ -27,7 +27,7 @@ function tt_ana_layered(y_coords, velocity_layers, source_y)
     return tt
 end
 
-function test_het2d(plotit=false)
+function test_het2d(;plotit=false)
 
     MAX_ERROR = 0.1
 
@@ -55,6 +55,7 @@ function test_het2d(plotit=false)
     @test max_error < MAX_ERROR
     
     if plotit 
+        Makie.inline!(true)
 
         fig = Figure(size=(500,500))
 
@@ -74,4 +75,4 @@ function test_het2d(plotit=false)
 
 end
 
-test_het2d()
+test_het2d(plotit=false)

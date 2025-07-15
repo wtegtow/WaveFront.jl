@@ -1,6 +1,6 @@
 using WaveFront
 using Test
-using CairoMakie
+using GLMakie 
 
 function tt_ana_hom(x_coords, y_coords, velocity, source)
     nx, ny = length(x_coords), length(y_coords)
@@ -14,14 +14,12 @@ function tt_ana_hom(x_coords, y_coords, velocity, source)
     return tt
 end
 
-function test_hom2d(plotit=false)
+function test_hom2d(;plotit=false)
 
     MAX_ERROR = 0.1
 
     x_coords = 0:5:1000 
     y_coords = 0:5:1000
-    sources = [(Int(floor(length(x_coords)/2)), 
-                Int(floor(length(y_coords)/2)))]
     source_coord = (x_coords[Int(floor(length(x_coords)/2))], 
                     y_coords[Int(floor(length(y_coords)/2))])
     velocity = ones(length(x_coords), length(y_coords)) .* 500;
@@ -37,6 +35,8 @@ function test_hom2d(plotit=false)
 
     if plotit 
 
+        Makie.inline!(true)
+
         fig = Figure()
         ax1 = Axis(fig[1,1], yreversed=true, title="Eikonal", xlabel="x", ylabel="y")
         ax2 = Axis(fig[1,2], yreversed=true, title="Analytical", xlabel="x", ylabel="y")
@@ -46,9 +46,9 @@ function test_hom2d(plotit=false)
         contourf!(ax2, grid.x_coords, grid.y_coords, tt_ana, levels=10)
         contourf!(ax3, grid.x_coords, grid.y_coords, misfit, levels=10)
 
-        Colorbar(fig[2,1], limits=(minimum(tt_num), maximum(tt_num)), vertical=false, label="travel time")
-        Colorbar(fig[2,2], limits=(minimum(tt_ana), maximum(tt_ana)), vertical=false, label="travel time")
-        Colorbar(fig[2,3], limits=(minimum(misfit), maximum(misfit)), vertical=false, label="travel time")
+        #Colorbar(fig[2,1], limits=(minimum(tt_num), maximum(tt_num)), vertical=false, label="travel time")
+        #Colorbar(fig[2,2], limits=(minimum(tt_ana), maximum(tt_ana)), vertical=false, label="travel time")
+        #Colorbar(fig[2,3], limits=(minimum(misfit), maximum(misfit)), vertical=false, label="travel time")
 
         display(fig)
 
@@ -56,4 +56,4 @@ function test_hom2d(plotit=false)
 
 end 
 
-test_hom2d()
+test_hom2d(plotit=false)
